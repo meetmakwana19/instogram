@@ -5,7 +5,7 @@ const constants = require("./local-constants")
 // ----- initialize the express app  
 const app = express()
 
-// database connection setup 
+// database connection setup - after this we can use mongoose anywhere in the project
 
 // ---- Async behaviour can be noticed here. DB connection takes time and the app gets listed first from the last line ----
 // this connect() method takes 2 parameters : url string and options
