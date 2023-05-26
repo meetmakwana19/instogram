@@ -18,6 +18,9 @@ const new_schema = new mongoose.Schema(
             type: String,
             required: true
         },
+    },
+    {
+        timestamps: true //to create created_at & updated_at fields 
     }
 )
 // this use of schema ensures that no other key value pair other than the ones mentioned in the schema can enter in the DB.

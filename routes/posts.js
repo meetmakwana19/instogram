@@ -19,6 +19,14 @@ router.get("/", (req, res) => {
             error: null
         })
     }) 
+    .catch((error) => {
+        return res.status(422)
+        .json({
+            message: "Posts fetching failed", 
+            data: documents, 
+            error: error.message ? error.message : error.toString()
+        })
+    })
 
     /*
     mongoose.connection.db.collection("posts")
@@ -34,7 +42,7 @@ router.get("/", (req, res) => {
         })
     })
     */
-   
+
     /* 
     return res.status(200)
     .json({
@@ -60,6 +68,14 @@ router.post("/", (req, res) => {
             data: document, //no array but just a single object 
             error: null
     })    
+    })
+    .catch((error) => {
+        return res.status(422)
+        .json({
+            message: "Posts creation failed", 
+            data: {}, 
+            error: error.message ? error.message : error.toString()
+        })
     })
     
     /*
