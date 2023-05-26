@@ -1,8 +1,22 @@
 const express = require("express")
+const mongoose = require("mongoose")
 const router = require("./routes/index")
-
+const constants = require("./local-constants")
 // ----- initialize the express app  
 const app = express()
+
+// database connection setup 
+
+// ---- Async behaviour can be noticed here. DB connection takes time and the app gets listed first from the last line ----
+// this connect() method takes 2 parameters : url string and options
+// this is a promise so will need to handle it 
+mongoose.connect(constants.mongo_uri, {})
+.then((client) => {
+    console.log("Database connection established ! Database Name : ", client.connection.db.databaseName);
+})
+.catch((error) => {
+    console.log("Database connection failed and the error is : ", error);
+})
 
 // middleware 
 
@@ -20,7 +34,6 @@ app.use("/posts", router.postRouter)
 // greetings call with path as the root path
 app.get("/", (req, res) => {
     return res.send("Greetings from SM App Server !")
-
 })
 
 // ----- run the server 
