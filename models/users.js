@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
+const bcrypt = require("bcrypt")
 const { randomSecureKey } = require("../utils")
+const { saltRounds } = require("../local-constants")
 
 const schema = new mongoose.Schema({
     uid: {
@@ -39,6 +41,15 @@ schema.index(
     { unique: true, background: true }
 )
 */
+
+// mongoose hook
+// cannot use ()=? arrow function here coz arrow function has limited scope and then it wont understand the context for this
+schema.pre("save", function () {
+    return bcrypt.hash(this.password, saltRounds)
+        .then(hash => {
+            this.password = hash;
+        })
+})
 
 // model name, collection name should be same 
 const userModel = mongoose.model("user", schema)
