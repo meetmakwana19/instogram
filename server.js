@@ -30,6 +30,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // adding routes 
 app.use("/posts", router.postRouter)
+app.use("/users", router.userRouter)
 
 // greetings call with path as the root path
 app.get("/", (req, res) => {
