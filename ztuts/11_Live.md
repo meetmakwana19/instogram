@@ -56,3 +56,10 @@ Database connection failed and the error is :  Error: queryTxt ETIMEOUT meet-dev
 ```
 So solved it by changing the connection url by chosing node version 2.2.12 or later and replaced the connection string 
 Src : https://stackoverflow.com/a/63904033/17796286
+
+---
+
+#### Issues :
+
+1. When sending the same http POST request to create a new post with image by sending form-data in the request, the request gets successful only once. Say once I send the request and if I again send the same request with same form-data consisting of same image then the mongoose throws error of `MongoServerError: E11000 duplicate key error collection: sm_app.posts index: uid_1 dup key: { uid: \"sma36961126\" }`. 
+2. Note: There's no server restart inbetween sending requests howevere if the server is restarted then the request can be sent successfully with same form-data & image but again if request sent again then that same error response comes.
