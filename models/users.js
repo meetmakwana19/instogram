@@ -1,6 +1,9 @@
 const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
 const { randomSecureKey } = require("../utils")
+const ApiError = require("../utils/ApiError")
+
+// using .env so no need of this
 // const { saltRounds } = require("../local-constants")
 
 const schema = new mongoose.Schema({
@@ -49,6 +52,7 @@ schema.pre("save", function () {
         .then(hash => {
             this.password = hash;
         })
+        .catch(error => new ApiError(400, "Error generating password", error.toString()))
 })
 
 // model name, collection name should be same 
