@@ -8,8 +8,9 @@ const new_schema = new mongoose.Schema(
         uid: {
             type: String,
             // if adding unique: true validation then need to reset whole DB by deleting it or restarting mongoose
-            // unique: true
-            default: randomSecureKey()
+            unique: true,
+            default: () => randomSecureKey(),
+            // default: randomSecureKey(),
         },
         user_id: {
             type: String,
