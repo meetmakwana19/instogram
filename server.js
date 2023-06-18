@@ -10,7 +10,7 @@ const app = express()
 
 // dotenv.config()
 // when multiple envirnment files are used for a project
-dotenv.config({ path: "." + process.env.NODE_ENV + ".env"})
+// dotenv.config({ path: "." + process.env.NODE_ENV + ".env"})
 dotenv.config({
     path: process.env.NODE_ENV === "prod" ? ".env" : `.${process.env.NODE_ENV}.env`
 })

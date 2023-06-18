@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const { randomSecureKey } = require("../utils")
 
 // new_schema is an object so to initiate it will need to use the keyword `new` for class Schema()
 // Schema() will have parameter{} which will have the validations
@@ -7,16 +8,17 @@ const new_schema = new mongoose.Schema(
         uid: {
             type: String,
             // if adding unique: true validation then need to reset whole DB by deleting it or restarting mongoose
-            unique: true
+            // unique: true
+            default: randomSecureKey()
         },
         user_id: {
             type: String,
-            required: true
+            // required: true
         },
         caption: String,
         image_url: {
             type: String,
-            required: true
+            // required: true
         },
     },
     {
