@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
-const { mongo_uri } = require("../local-constants")
+// const { mongo_uri } = require("../local-constants")
 
 module.exports = () => {
     // this connect() method takes 2 parameters : url string and options
     // this is a promise so will need to handle it 
-    mongoose.connect(mongo_uri, {})
+    mongoose.connect(process.env.MONGO_URI, {})
         .then((client) => {
             const {db} = client.connection;
             // console.log("Database connection established ! Database Name : ", client.connection.db.databaseName);

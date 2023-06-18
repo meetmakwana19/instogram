@@ -1,3 +1,6 @@
 /node_modules
 package-lock.json
 local-constants.js
+.env
+.local.env
+.test.env

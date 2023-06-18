@@ -3,8 +3,20 @@ const mongoose = require("mongoose")
 const router = require("./routes/index")
 const errorHandler = require("./middlware/errorHandler")
 const connectToDatabase = require("./config/db")
+const dotenv = require("dotenv")
+
 // ----- initialize the express app  
 const app = express()
+
+// dotenv.config()
+// when multiple envirnment files are used for a project
+dotenv.config({ path: "." + process.env.NODE_ENV + ".env"})
+dotenv.config({
+    path: process.env.NODE_ENV === "prod" ? ".env" : `.${process.env.NODE_ENV}.env`
+})
+
+// console.log("System environment : ", process.env);
+// console.log("System environment : ", process.env.NODE_ENV);
 
 // database connection setup - after this we can use mongoose anywhere in the project
 
@@ -38,9 +50,11 @@ app.get("/", (req, res) => {
 // ----- run the server 
 
 // listen takes port no. and callback function
-app.listen(8000, (error) => {
+app.listen(process.env.PORT, (error) => {
+
+    console.log(`Server is running in ${process.env.NODE_ENV} environment`);
     if (error) {
         console.log("Server unable to start due to error: ", error);
     }
-    console.log("Server has started !");
+    console.log("Server has started !", process.env.PORT);
 })
