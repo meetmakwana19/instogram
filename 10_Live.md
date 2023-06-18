@@ -34,7 +34,8 @@ npm init @eslint/config
 ```
 ./node_modules/.bin/eslint .
 ```
-12. d
+this will list all the ESLint errors and warnings
+12. 
 
 ---
 
