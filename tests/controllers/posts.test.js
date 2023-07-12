@@ -78,7 +78,7 @@ describe("Post APIs", () => {
   it("create a post", (done) => {
     api
       .post("/posts")
-      .attach("data", "tests/resources/sample.png")
+      .attach("file", "tests/resources/sample.png")
       .field("caption", "Trying testing.")
       .field("user_id", "sma_9")
       .then((response) => {
