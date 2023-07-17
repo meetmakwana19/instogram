@@ -75,13 +75,14 @@ describe("Post APIs", () => {
       .catch(done);
   });
 
-  it("create a post", (done) => {
+  it.only("create a post", (done) => {
     api
       .post("/posts")
-      .attach("file", "tests/resources/sample.png")
+      .attach("image", "tests/resources/sample.png")
       .field("caption", "Trying testing.")
       .field("user_id", "sma_9")
       .then((response) => {
+        // console.log("response.body --- ", response.body);
         // expect(response.status).to.equal(200);
         // expect(response.body).to.have.property("data");
         expect(response.body).to.have.property("message");

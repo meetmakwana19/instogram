@@ -6,6 +6,7 @@
   * Normal testing has QA testing and normal testing.
   * This is API testing.
 * The developer itself tests and not some other tester.
+* So think of it like White Box Testing. 
 
 ## Testing Fundamentals 
 
@@ -93,14 +94,16 @@ describe("__a_title__", callbackFunction(){
 
 1. Server/API/App runner
 2. It directly runs the server
-3. It's an **Assertion framework** that helps you test Express servers.
-4. Supertest is a Node.js library that allows you to make HTTP requests to your API.
-5. It runs the requests against a server request. Which means we dont need to start a server in some port and then start testing in some another.
-6. We just need to give it the `server` object and then we can work with it directly!
-7. Using Supertest, we dont need to listen the app on some port and apparently its quicker.
-8. We can make requests using SuperTest directly without needing a running server. 
-9. So it provides a high-level abstraction for testing HTTP requests - perfect for APIs.
-10. SuperTest is smart enough to check the content type from the response and appropriately parses the information into a JavaScript object. It makes verifying your JSON APIs much easier to do since you don't have to worry about parsing the response.
+3. We can say it a HTTP testing & assertions library.
+4. It's an **Assertion framework** that helps you test Express servers.
+5. Supertest is a Node.js library that allows you to make HTTP requests to your API.
+6. It simulates HTTP requests and responses
+7. It runs the requests against a server request. Which means we dont need to start a server in some port and then start testing in some another.
+8. We just need to give it the `server` object and then we can work with it directly!
+9. Using Supertest, we dont need to listen the app on some port and apparently its quicker.
+10. We can make requests using SuperTest directly without needing a running server. 
+11. So it provides a high-level abstraction for testing HTTP requests - perfect for APIs.
+12. SuperTest is smart enough to check the content type from the response and appropriately parses the information into a JavaScript object. It makes verifying your JSON APIs much easier to do since you don't have to worry about parsing the response.
 
 Mocha ---> SuperTest ---> Chai 
 
